@@ -27,6 +27,20 @@ Scenario("Login with success", ({ home_page }) => {
 
   // validar
   home_page.checkLoginSuccess();
+
+  // Fazer um Scroll na tela:
+  // I.touchPerform([
+  //   {
+  //     action: "longPress",
+  //     options: { x: 900, y: 1200 },
+  //   },
+  //   {
+  //     action: "moveTo",
+  //     options: { x: 900, y: 2500 },
+  //   },
+  //   { action: "release" },
+  // ]);
+
   // I.waitForElement("#search-field", 10);
   // I.seeElement("#search-field");
   // I.waitForElement("#email", 10);
@@ -41,7 +55,7 @@ Scenario("Login with success", ({ home_page }) => {
 
   // // clicar em Entrar
   // I.tap("#login-button");
-});
+}).tag("@login_sucesso");
 
 Scenario("Login with error", () => {
   login_page.doLogin("xteste@teste.com", "123456");
