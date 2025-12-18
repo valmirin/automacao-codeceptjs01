@@ -22,24 +22,17 @@ After(() => {
   console.log("Depois de rodar os testes...");
 });
 
-Scenario("Login with success", ({ home_page }) => {
+Scenario("Login with success", async ({ I, login_page, home_page }) => {
   login_page.doLogin("teste@teste.com", "123456");
 
   // validar
   home_page.checkLoginSuccess();
 
-  // Fazer um Scroll na tela:
-  // I.touchPerform([
-  //   {
-  //     action: "longPress",
-  //     options: { x: 900, y: 1200 },
-  //   },
-  //   {
-  //     action: "moveTo",
-  //     options: { x: 900, y: 2500 },
-  //   },
-  //   { action: "release" },
-  // ]);
+  // Fazer scroll até encontrar o elemento "Bulldog Hamburgueria"
+  await I.scrollDownToElement('//*[@text="Bulldog Hamburgueria"]');
+
+  // Valida que o elemento está visível
+  I.seeElement('//*[@text="Bulldog Hamburgueria"]');
 
   // I.waitForElement("#search-field", 10);
   // I.seeElement("#search-field");
